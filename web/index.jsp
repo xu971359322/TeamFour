@@ -54,7 +54,5 @@
 <script src="login/js/jQuery.time.js" type="text/javascript"></script>
 <br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br>
-  wzxwdc
-
 </body>
 </html>
