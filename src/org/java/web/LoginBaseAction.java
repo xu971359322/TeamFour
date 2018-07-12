@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class BaseAction extends ActionSupport implements ServletRequestAware {
+public class LoginBaseAction extends ActionSupport implements ServletRequestAware {
 
     protected Map<String,Object> ses;
     protected HttpServletRequest request;
