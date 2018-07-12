@@ -50,4 +50,15 @@ public class User {
     public void setIdentity(Integer identity) {
         this.identity = identity;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid='" + uid + '\'' +
+                ", username='" + username + '\'' +
+                ", uname='" + uname + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", identity=" + identity +
+                '}';
+    }
 }
