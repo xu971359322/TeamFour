@@ -5,10 +5,17 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <include file="struts-default.xml"/>
-    <package name="main" namespace="/" extends="struts-default">
-        <action name="main_*" class="org.java.web.MainAction" method="{1}">
-            <result name="show">main.jsp</result>
+    <include file="xu_struts.xml"/>
+    <include file="zhang_struts.xml"/>
+    <include file="xie_struts.xml"/>
+    <include file="ping_struts.xml"/>
+    <include file="hou_struts.xml"/>
+
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="login" namespace="/" extends="struts-default">
+        <action name="login_*" class="org.java.web.LoginAction" method="{1}">
+            <result name="main">main.jsp</result>
             <result name="index">index.jsp</result>
         </action>
     </package>
