@@ -19,8 +19,8 @@ public class LoginDaoImpl {
 
         Criteria c =ses.createCriteria(User.class);
 
-        c.add(Restrictions.eq("username","admin"));
-        c.add(Restrictions.eq("pwd","123123"));
+        c.add(Restrictions.eq("username",username));
+        c.add(Restrictions.eq("pwd",pwd));
 
         User user = (User) c.uniqueResult();
         return user;

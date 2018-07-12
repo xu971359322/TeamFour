@@ -9,7 +9,7 @@ import org.java.util.HibernateUtil;
 public class UserServiceImpl implements UserService{
     LoginDaoImpl dao = new LoginDaoImpl();
 
-    public User  selUser(String username ,String pwd){
+    public User selUser(String username ,String pwd){
         Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
         System.out.println(username+" "+pwd);
         User user = dao.selUser(username,pwd);
