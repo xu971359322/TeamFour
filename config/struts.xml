@@ -11,6 +11,5 @@
             <result name="show">main.jsp</result>
             <result name="index">index.jsp</result>
         </action>
-
     </package>
 </struts>
