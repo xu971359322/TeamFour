@@ -17,5 +17,9 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping resource="org/java/entity/User.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveclient.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveallocation.hbm.xml"/>
+        <mapping resource="org/java/entity/xuSql.xml"/>
+
     </session-factory>
 </hibernate-configuration>
