@@ -3,5 +3,16 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-
+    <package name="struts" namespace="/p" extends="struts-default">
+        <action name="ping_*" class="org.java.web.ChartAction" method="{1}">
+            <result name="success">/pjsp/showchartgx.jsp</result>
+            <result name="showChartFX">/pjsp/showchartfx.jsp</result>
+            <result name="showChartFW">/pjsp/showchartfw.jsp</result>
+            <result name="showChartLS">/pjsp/showchartls.jsp</result>
+            <result name="searchFX">/pjsp/showchartfx.jsp</result>
+            <result name="searchFW">/pjsp/showchartfw.jsp</result>
+            <result name="searchLS">/pjsp/showchartls.jsp</result>
+            <result name="changePage">/pjsp/showchartls.jsp</result>
+        </action>
+    </package>
 </struts>

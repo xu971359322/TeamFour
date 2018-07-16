@@ -17,7 +17,6 @@ public class LoginBaseAction extends ActionSupport implements ServletRequestAwar
 
     protected User u =new User();
 
-
     public String getErr() {
         return err;
     }
@@ -33,7 +32,6 @@ public class LoginBaseAction extends ActionSupport implements ServletRequestAwar
     public void setU(User u) {
         this.u = u;
     }
-
 
     @Override
     public void setServletRequest(HttpServletRequest request) {

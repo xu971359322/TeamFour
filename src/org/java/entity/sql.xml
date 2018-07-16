@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <sql-query name="level">
+        SELECT k.Lv_id,k.lv_name as lv_name ,COUNT(m.Lv_id) AS num
+        FROM (SELECT Lv_id,lv_name FROM leverclient ) k
+        LEFT JOIN (SELECT Lv_id, manager,credit,satisfaction FROM clientdetail) m ON k.Lv_id = m.Lv_id GROUP BY k.Lv_id ORDER BY num DESC
+    </sql-query>
+
+    <sql-query name="satisfaction">
+        SELECT k.Lv_id,k.lv_name as lv_name, m.manager as manager  ,m.satisfaction AS satisfaction
+        FROM (SELECT Lv_id,lv_name FROM leverclient ) k LEFT JOIN (SELECT Lv_id, manager,credit,satisfaction FROM clientdetail) m ON k.Lv_id = m.Lv_id ORDER BY k.lv_name asc
+    </sql-query>
+
+    <sql-query name="credit">
+        SELECT k.Lv_id,k.lv_name as lv_name, m.manager as manager ,m.credit AS credit
+        FROM (SELECT Lv_id,lv_name FROM leverclient ) k LEFT JOIN (SELECT Lv_id, manager,credit,satisfaction FROM clientdetail) m ON k.Lv_id = m.Lv_id ORDER BY k.lv_name asc
+    </sql-query>
+
+</hibernate-mapping>

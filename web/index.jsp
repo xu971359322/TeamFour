@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/7/11
-  Time: 14:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>jQuery/CSS3分步骤注册表单切换动画在线演示</title>
-	<link rel="stylesheet" media="screen" href="login/css/css.css" />
+		<link rel="stylesheet" media="screen" href="login/css/css.css" />
 </head>
 <form id="msform" action="login_login" method="post">
 	<!-- progressbar -->
@@ -29,6 +22,8 @@
 		<input type="submit" class="next action-button" value="登录"/>
 		<input type="button" name="next" class="next action-button" value="退出" />
 	</fieldset>
+
+
 	<%--<fieldset>--%>
 		<%--<h2 class="fs-title">Social Profiles</h2>--%>
 		<%--<h3 class="fs-subtitle">Your presence on the social network</h3>--%>
