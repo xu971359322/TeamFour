@@ -3,5 +3,9 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-
+    <package name="sell" namespace="/" extends="struts-default">
+        <action name="sell_*" class="org.java.web.SellAction" method="{1}">
+            <result name="show">sell/sellShow.jsp</result>
+        </action>
+    </package>
 </struts>
