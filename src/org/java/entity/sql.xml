@@ -19,4 +19,16 @@
         FROM (SELECT Lv_id,lv_name FROM leverclient ) k LEFT JOIN (SELECT Lv_id, manager,credit,satisfaction FROM clientdetail) m ON k.Lv_id = m.Lv_id ORDER BY k.lv_name asc
     </sql-query>
 
+    <sql-query name="showLSCount">
+        SELECT COUNT(*) AS `count`,
+            CASE ctype
+            WHEN 0 THEN '正常'
+            WHEN 1 THEN '成功'
+            WHEN 2 THEN '失败'
+            WHEN 3 THEN '暂缓流失'
+            WHEN 4 THEN '已流失'
+            END AS stauts
+        FROM `client` c GROUP BY stauts
+    </sql-query>
+
 </hibernate-mapping>

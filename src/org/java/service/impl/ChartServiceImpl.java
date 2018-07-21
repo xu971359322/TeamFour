@@ -11,9 +11,9 @@ import java.util.Map;
 public class ChartServiceImpl {
     private ChartDaoImpl dao=new ChartDaoImpl();
 
-    public List<Map<String,String>> showChartGX(String clientName,String year){
+    public List<Map<String,Object>> showChartGX(String clientName,String year){
         Transaction transaction= HibernateUtil.getCurrentSession().beginTransaction();
-        List<Map<String,String>> list=dao.showChartGX(clientName,year);
+        List<Map<String,Object>> list=dao.showChartGX(clientName,year);
         transaction.commit();
         return list;
     }
@@ -51,6 +51,13 @@ public class ChartServiceImpl {
         BigInteger count = dao.getCount(companyname, uname);
         transaction.commit();
         return count;
+    }
+
+    public List<Map<String,String>> showChartLSCount(){
+        Transaction transaction= HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String, String>> list = dao.showChartLSCount();
+        transaction.commit();
+        return list;
     }
 
 }

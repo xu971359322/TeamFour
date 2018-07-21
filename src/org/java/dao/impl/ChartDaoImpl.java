@@ -42,7 +42,7 @@ public class ChartDaoImpl implements ChartDao{
         return count;
     }
 
-    public List<Map<String, String>> showChartGX(String clientName,String year) {
+    public List<Map<String, Object>> showChartGX(String clientName,String year) {
         Session session = HibernateUtil.getCurrentSession();
 
         StringBuffer sb=new StringBuffer("SELECT g.gid as gid ,c.companyname as companyname ,(o.ocount*g.gprice) AS sum ,\n" +
@@ -62,12 +62,11 @@ public class ChartDaoImpl implements ChartDao{
             }
         }
 
-        System.out.println(sb.toString());
+        List<Map<String, Object>> list = session.createSQLQuery(sb.toString()).setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
 
-        List<Map<String, String>> list = session.createSQLQuery(sb.toString()).setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
-        System.out.println("编号" + "\t" + "客户名称" + "\t" + "订单金额（元）" + "\t" + "状态"+"\t"+"年份");
-        for (Map<String, String> info : list) {
-            System.out.println(info);
+       // System.out.println("编号" + "\t" + "客户名称" + "\t" + "订单金额（元）" + "\t" + "状态"+"\t"+"年份");
+        for (Map<String, Object> info : list) {
+           System.out.println("----------------------:::"+info.get("companyname"));
         }
         return list;
     }
@@ -129,9 +128,15 @@ public class ChartDaoImpl implements ChartDao{
                 setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
 
         for (Map<String, String> info : list) {
-            System.out.println(info);
+            System.out.println(info.get("companyname"));
         }
 
+        return list;
+    }
+
+    public List<Map<String,String>> showChartLSCount(){
+        Session session = HibernateUtil.getCurrentSession();
+        List<Map<String, String>> list= session.getNamedQuery("showLSCount").setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
         return list;
     }
 }

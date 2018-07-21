@@ -32,7 +32,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="index.html"><img src="${pageContext.request.contextPath}/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${pageContext.request.contextPath}/assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -126,10 +126,22 @@
                         <div class="panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title">客户流失分析</h3><br/>
-                                <form action="${pageContext.request.contextPath}/p/ping_searchLS" method="post">
-                                    <span>客户名称</span>&nbsp;<input type="text" name="companyname" value="${sessionScope.clientName}">
-                                    <span>客户经理</span>&nbsp;<input type="text" name="uname" value="${sessionScope.manger}">
-                                    <input type="submit" value="查询">
+                                <%--bootstrap表单在一行显示--%>
+                                <form  action="${pageContext.request.contextPath}/p/ping_searchLS" method="post" class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <label class="form-label">客户名称</label>
+                                        <input type="text" name="companyname" value="${sessionScope.clientName}" class="form-control"  placeholder="客户名称">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">客户经理</label>
+                                        <input type="text" name="uname" value="${sessionScope.manger}" class="form-control"  placeholder="客户经理">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" class="btn btn-info" value="查询">
+                                        </div>
+                                    </div>
+
                                 </form>
                             </div>
                             <div class="panel-body">
@@ -154,7 +166,7 @@
                                         </tr>
                                     </s:iterator>
                                     <tr>
-                                        <td colspan="4">
+                                        <td colspan="6" align="center">
                                             <c:if test="${pageNo==1}">
                                                 <button class="btn btn-success" disabled="disabled">首页</button>&nbsp;
                                                 <button class="btn btn-success" disabled="disabled">上一页</button>&nbsp;
@@ -179,7 +191,7 @@
                         </div>
                         <!-- END TABLE STRIPED -->
 
-                        <div id="div1" style="width:600px;height:400px"></div>
+                        <div id="div2" style="width:600px;height:400px"></div>
                     </div>
                 </div>
             </div>

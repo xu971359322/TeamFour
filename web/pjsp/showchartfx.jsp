@@ -32,7 +32,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="index.html"><img src="${pageContext.request.contextPath}/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${pageContext.request.contextPath}/assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -122,21 +122,27 @@
                         <div class="panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title">客户构成分析</h3><br/>
-                            <form action="${pageContext.request.contextPath}/p/ping_searchFX" method="post">
-                                <select name="typeFX">
-                                    <option value="level" <c:if test="${requestScope.type=='level'}">selected</c:if>>按等级</option>
-                                    <option value="satisfaction" <c:if test="${requestScope.type=='satisfaction'}">selected</c:if>>按满意度</option>
-                                    <option value="credit" <c:if test="${requestScope.type=='credit'}">selected</c:if>>按信用度</option>
-                                </select>
-                                <input type="submit" value="提交">
+                            <form action="${pageContext.request.contextPath}/p/ping_searchFX" method="post" class="form-inline" role="form">
+                                <div class="form-group">
+                                    <select class="form-control" style="width:1000px;" name="typeFX">
+                                        <option value="level" <c:if test="${requestScope.type=='level'}">selected</c:if>>按等级</option>
+                                        <option value="satisfaction" <c:if test="${requestScope.type=='satisfaction'}">selected</c:if>>按满意度</option>
+                                        <option value="credit" <c:if test="${requestScope.type=='credit'}">selected</c:if>>按信用度</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-info" value="提交">
+                                    </div>
+                                </div>
                             </form>
                             </div>
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>编号</th><%----%>
-                                        <th>客户等级</th><%----%>
+                                        <th>编号</th>
+                                        <th>客户等级</th>
                                         <c:if test="${requestScope.type=='satisfaction'}">
                                             <th>客户姓名</th>
                                             <th>满意度</th>
@@ -146,45 +152,82 @@
                                             <th>信用度</th>
                                         </c:if>
                                         <c:if test="${requestScope.type=='level'}">
-                                            <th>客户数量</th><%----%>
+                                            <th>客户数量</th>
                                         </c:if>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <s:iterator value="#request.list" var="k" status="st" >
+                                    <s:iterator value="#request.list" var="k" status="st">
                                         <tr>
                                             <td>${st.count}</td>
-                                            <td><s:property value="#k.lv_name"/></td>
+                                            <s:if test="#k.lv_name=='合作伙伴'">
+                                                <td style="color:green"><s:property value="#k.lv_name"/></td>
+                                            </s:if>
+                                            <s:if test="#k.lv_name=='重点开发客户'">
+                                                <td style="color:red"><s:property value="#k.lv_name"/></td>
+                                            </s:if>
+                                            <s:if test="#k.lv_name=='战略伙伴'">
+                                                <td style="color:blue"><s:property value="#k.lv_name"/></td>
+                                            </s:if>
+                                            <s:if test="#k.lv_name=='大客户'">
+                                                <td style="color:orange"><s:property value="#k.lv_name"/></td>
+                                            </s:if>
+                                            <s:if test="#k.lv_name=='普通客户'">
+                                                <td style="color:black"><s:property value="#k.lv_name"/></td>
+                                            </s:if>
 
                                             <c:if test="${requestScope.type=='satisfaction'}">
-                                                <td><s:property value="#k.manager"/></td>
-                                                <td><s:property value="#k.satisfaction"/></td>
+                                                <s:if test="#k.manager!=null">
+                                                    <td><s:property value="#k.manager"/></td>
+                                                </s:if>
+                                                <s:if test="#k.manager==null">
+                                                    <td><b>快去发展客户</b></td>
+                                                </s:if>
+                                                <c:if test="${not empty k.satisfaction}">
+                                                    <td>
+                                                    <c:forEach begin="1" end="${k.satisfaction}">
+                                                        ❤
+                                                    </c:forEach>
+                                                    </td>
+                                                </c:if>
+                                                <c:if test="${empty k.satisfaction}">
+                                                    <td>...</td>
+                                                </c:if>
                                             </c:if>
 
                                             <c:if test="${requestScope.type=='credit'}">
-                                                 <td><s:property value="#k.manager"/></td>
-                                                 <td><s:property value="#k.credit"/></td>
+                                                <s:if test="#k.manager!=null">
+                                                    <td><s:property value="#k.manager"/></td>
+                                                </s:if>
+                                                <s:if test="#k.manager==null">
+                                                    <td><b>快去发展客户</b></td>
+                                                </s:if>
+                                                <c:if test="${not empty k.credit}">
+                                                    <td>
+                                                        <c:forEach begin="1" end="${k.credit}">
+                                                            👍
+                                                        </c:forEach>
+                                                    </td>
+                                                </c:if>
+                                                <c:if test="${empty k.credit}">
+                                                    <td>...</td>
+                                                </c:if>
                                             </c:if>
 
                                             <c:if test="${requestScope.type=='level'}">
                                                 <td><s:property value="#k.num"/></td>
                                             </c:if>
-
                                         </tr>
                                     </s:iterator>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <!-- END TABLE STRIPED -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
 
 

@@ -1,7 +1,11 @@
 package org.java.web;
 
 import com.opensymphony.xwork2.ActionSupport;
+import net.sf.json.JSONObject;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +20,7 @@ public class ChartAction extends ChartBaseAction {
         List<Map<String, String>> yearList = service.getYear();
         session.setAttribute("year",yearList);
 
-        List<Map<String, String>> list =service.showChartGX(null,null);
+        List<Map<String, Object>> list =service.showChartGX(null,null);
         request.setAttribute("list",list);
         return ActionSupport.SUCCESS;
     }
@@ -35,7 +39,7 @@ public class ChartAction extends ChartBaseAction {
         List<Map<String, String>> yearList = service.getYear();
         session.setAttribute("year",yearList);
 
-        List<Map<String, String>> list =service.showChartGX(searchName,yearName);
+        List<Map<String, Object>> list =service.showChartGX(searchName,yearName);
         request.setAttribute("list",list);
         return ActionSupport.SUCCESS;
     }
@@ -56,7 +60,7 @@ public class ChartAction extends ChartBaseAction {
             yearName = null;
         }
         List<Map<String, String>> list = service.showChartFW(yearName);
-        request.setAttribute("yearName", yearName);
+        session.setAttribute("yearName", yearName);
         request.setAttribute("list", list);
         return "searchFW";
     }
@@ -146,5 +150,98 @@ public class ChartAction extends ChartBaseAction {
         setCount(Integer.parseInt(service.getCount(null,null).toString()));
         request.setAttribute("list", list);
         return "showChartLS";
+    }
+
+    /**
+     *
+     */
+    public void showTypeEChartGX(){
+        response.setContentType("text/html;charset=utf-8");
+        System.out.println("------------------------------静茹AJAX方法----------------------------");
+        try {
+            List<Map<String, Object>> list = service.showChartGX(null,null);
+            JSONObject json=new JSONObject();
+
+
+            List<Map<String, Object>> list2= new ArrayList<Map<String, Object>>();
+
+            for (Map<String, Object> m: list){
+                Map<String,Object> map =new HashMap<String, Object>();
+                map.put("name",m.get("companyname"));
+                map.put("value",m.get("sum"));
+                System.out.println(m);
+                list2.add(map);
+            }
+
+            json.put("list2",list2);
+
+            //取得所有的标题，放在一个集合中
+            List<Object> titles = new ArrayList<Object>();
+            for(Map<String,Object>  m : list2){
+                titles.add(m.get("name"));
+            }
+
+            json.put("titles",titles);//一维结构，显示在在legend中
+
+            response.getWriter().write(json.toString());
+
+
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showTypeEChartLS(){
+        response.setContentType("text/html;charset=utf-8");
+        try {
+            List<Map<String, String>> list =service.showChartLSCount();
+
+            JSONObject json=new JSONObject();
+
+            List<Map<String,String>> list2=new ArrayList<Map<String,String>>();
+
+            for(Map<String,String> m : list){
+                Map<String,String> map =new HashMap<String, String>();
+                map.put("name",m.get("stauts"));
+                map.put("value",m.get("count"));
+                list2.add(map);
+            }
+
+            json.put("list2",list2);
+
+            //取得所有的标题，放在一个集合中
+            List<Object> titles = new ArrayList<Object>();
+            for(Map<String,String>  m : list2){
+                titles.add(m.get("stauts"));
+            }
+            json.put("titles",titles);//一维结构，显示在在legend中
+            response.getWriter().write(json.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showTypeEChartFW(){
+        response.setContentType("text/html;charset=utf-8");
+        String yearName=(String) session.getAttribute("yearName");
+        try {
+            List<Map<String, String>> list = service.showChartFW(yearName);
+            JSONObject json=new JSONObject();
+            Map<String, String> map =new HashMap<String,String>();
+            for (int i=0;i<list.size();i++){
+                map.put(list.get(i).get("sd_name"),list.get(i).get("count"));
+            }
+            json.put("names",map.keySet());//品牌名称的集合
+            json.put("vals",map.values());
+
+            response.getWriter().write(json.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

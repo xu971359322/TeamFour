@@ -32,7 +32,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="index.html"><img src="${pageContext.request.contextPath}/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${pageContext.request.contextPath}/assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -125,58 +125,67 @@
                         <!-- TABLE STRIPED -->
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">客户贡献分析</h3><br/>
-                                <form action="${pageContext.request.contextPath}/p/ping_search" method="post">
-                                    <span>客户名称</span><input type="search" name="searchName" value="${requestScope.searchName}">
-                                    <span>年份</span>
-                                    <select name="yearName">
-                                            <option value="-1" >全部</option>
-                                               <c:forEach items="${sessionScope.year}" var="y">
-                                                    <option value="${y.year}" <c:if test="${y.year==requestScope.yearSelect}">selected</c:if> >${y.year}年</option>
-                                                </c:forEach>
-                                    </select>
-                                    <input type="submit" value="提交">
+                                <span id="alertShow111" style="float: right;cursor:pointer;text-decoration: underline;color:darkblue;">图表数据</span>
+                                <h3 class="panel-title">客户贡献分析</h3><br>
+                                <form action="${pageContext.request.contextPath}/p/ping_search" method="post" class="form-inline" role="form" >
+                                    <div class="form-group">
+                                        <label class="form-label">客户名称 </label>
+                                        <input type="search" name="searchName" value="${requestScope.searchName}" class="form-control"  placeholder="客户名称">
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="form-group">
+                                        <label class="form-label">年份 </label>
+                                        <select name="yearName" class="form-control">
+                                                <option value="-1" >全部</option>
+                                                   <c:forEach items="${sessionScope.year}" var="y">
+                                                        <option value="${y.year}" <c:if test="${y.year==requestScope.yearSelect}">selected</c:if> >${y.year}年</option>
+                                                   </c:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" class="btn btn-info" value="查询">
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>编号</th>
-                                        <th>客户名称</th>
-                                        <th>订单金额（元）</th>
-                                        <th>回款状态</th>
-                                        <th>年份</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <s:iterator value="#request.list" var="k" status="st" >
-                                        <tr>
-                                            <td>${st.count}</td>
-                                            <td><s:property value="#k.companyname"/></td>
-                                            <td><s:property value="#k.sum"/></td>
-                                            <td><s:property value="#k.result"/></td>
-                                            <td><s:property value="#k.year"/></td>
-                                        </tr>
-                                    </s:iterator>
-                                    </tbody>
-                                </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>客户名称</th>
+                                                <th>订单金额（元）</th>
+                                                <th>回款状态</th>
+                                                <th>年份</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <s:iterator value="#request.list" var="k" status="st" >
+                                                <tr>
+                                                    <td>${st.count}</td>
+                                                    <td><s:property value="#k.companyname"/></td>
+                                                    <td><s:property value="#k.sum"/><strong>.</strong>00(元)</td>
+                                                    <s:if test="#k.result=='未回款'">
+                                                        <td style="color: red"><s:property value="#k.result"/></td>
+                                                    </s:if>
+                                                    <s:if test="#k.result=='已回款'">
+                                                        <td style="color: green"><s:property value="#k.result"/></td>
+                                                    </s:if>
+                                                    <td><s:property value="#k.year"/></td>
+                                                </tr>
+                                            </s:iterator>
+                                            </tbody>
+                                        </table>
+                                    </div>
                             </div>
                         </div>
-                        <!-- END TABLE STRIPED -->
+                        <div id="div111" style="width:700px;height:500px;background-color:whitesmoke;display:none;position: absolute;top:150px;left: 350px;z-index:9"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -196,6 +205,45 @@
 <script src="${pageContext.request.contextPath}/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/vendor/toastr/toastr.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/scripts/klorofil-common.js"></script>
-</body>
+<script src="${pageContext.request.contextPath }/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="${pageContext.request.contextPath }/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    function showell(){
+        window.location.href="chart.jsp";
+    }
 
+    $(document).ready(function (){
+        $('#dataTables-example').DataTable({
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "lengthMenu": [5,10,20,50,100],
+            "autoWidth":true
+        });
+    });
+</script>
+<script src="${pageContext.request.contextPath}/login/js/echarts.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/pjs/pscript_gx.js"></script>
+</body>
 </html>
