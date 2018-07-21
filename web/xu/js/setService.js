@@ -14,7 +14,7 @@ $(function () {
     $("#frm").submit(function () {
         if(!sdId()){
             alert("填写完整的信息")
-            return false
+            return false;
         }
         if(!describe()){
             alert("填写完整的信息");

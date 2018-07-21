@@ -72,4 +72,17 @@ public class Dispose {
     public void setUid(String uid) {
         this.uid = uid == null ? null : uid.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Dispose{" +
+                "diId=" + diId +
+                ", diTime=" + diTime +
+                ", diContent='" + diContent + '\'' +
+                ", diResult='" + diResult + '\'' +
+                ", faction=" + faction +
+                ", scId=" + scId +
+                ", uid='" + uid + '\'' +
+                '}';
+    }
 }

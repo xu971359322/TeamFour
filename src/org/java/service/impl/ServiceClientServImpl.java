@@ -2,6 +2,8 @@ package org.java.service.impl;
 
 import org.hibernate.Transaction;
 import org.java.dao.impl.ServeClientDaoImpl;
+import org.java.entity.Dispose;
+import org.java.entity.SelService;
 import org.java.entity.Serveallocation;
 import org.java.entity.Serveclient;
 import org.java.util.HibernateUtil;
@@ -11,6 +13,63 @@ import java.util.Map;
 
 public class ServiceClientServImpl {
     private  ServeClientDaoImpl dao = new ServeClientDaoImpl();
+
+    public List<Map<String,String>> selSeach(SelService sel){
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String,String>> list =dao.selSeach(sel);
+        trans.commit();
+        return list;
+    }
+
+    public List<Map<String,String>> selLast(){
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String,String>> list =dao.selLast();
+        trans.commit();
+        return list;
+    }
+
+    public void updateDispose(Dispose dis){
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        dao.updateDispose(dis);
+        //如果满意度大于3则归档
+        if(dis.getFaction()>=3){
+            dao.updateType(3,dis.getScId());
+        }else{
+            //否则重新分配
+            dao.updateType(0,dis.getScId());
+            //删除服务记录
+            dao.delService(dis.getDiId());
+            //删除先前喷配记录
+            dao.delAllocation(dis.getScId());
+        }
+
+        trans.commit();
+    }
+
+    //得到处理完的结果
+    public List<Map<String,String>> getOver(Integer seid) {
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String,String>> list= dao.getOver(seid);
+        trans.commit();
+        return list;
+    }
+
+    public List<Map<String,String>> getDealOver(){
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String,String>> list= dao.getDealOver();
+        trans.commit();
+        return list;
+    }
+
+
+    //服务处理
+    public  void addDisponse(Dispose dis){
+        Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();
+        dao.addDisponse(dis);
+        dao.updateType(2,dis.getScId());
+        trans.commit();
+
+    }
 
     public List<Map<String,String>> getDetail(Integer scId){
         Transaction trans = HibernateUtil.getCurrentSession().beginTransaction();

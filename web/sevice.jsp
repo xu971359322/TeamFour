@@ -108,8 +108,8 @@
 									<li><a href="xu/serv_load.action" target="right" class="">服务创建</a></li>
 									<li><a href="xu/serv_give.action?status=1" target="right" class="">服务管理</a></li>
 									<li><a href="xu/serv_dis.action?status=2" target="right" class="">服务处理</a></li>
-									<li><a href="page-login.html" target="right" class="">服务反馈</a></li>
-									<li><a href="page-login.html" target="right" class="">服务归档</a></li>
+									<li><a href="xu/serv_dealOver.action?status=3" target="right" class="">服务反馈</a></li>
+									<li><a href="xu/serv_last.action?status=4" target="right" class="">服务归档</a></li>
 								</ul>
 							</div>
 						</li>
@@ -125,10 +125,9 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">Icons</h3>
 					<div class="panel panel-headline demo-icons">
-						<div class="panel-body" style="height: 500px">
-							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:  1200px;height: 1400px'></iframe>
+						<div class="panel-body" style="height: 800px">
+							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:1300px;height: 800px'></iframe>
 						</div>
 					</div>
 				</div>

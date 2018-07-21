@@ -1,8 +1,11 @@
 package org.java.web;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.xml.internal.ws.addressing.model.ActionNotSupportedException;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.java.entity.Dispose;
+import org.java.entity.SelService;
 import org.java.entity.Serveallocation;
 import org.java.entity.Serveclient;
 
@@ -21,6 +24,8 @@ public class ServiceBaseAction extends ActionSupport implements ServletRequestAw
 
     protected Serveclient sc;
     protected Serveallocation sa;
+    protected Dispose dis;
+    protected SelService ss;
 
     protected Integer status;
     protected Integer scId;
@@ -37,6 +42,22 @@ public class ServiceBaseAction extends ActionSupport implements ServletRequestAw
     protected List<Map<String,String>> client;
     //id服务
     protected Integer maxId;
+
+    public SelService getSs() {
+        return ss;
+    }
+
+    public void setSs(SelService ss) {
+        this.ss = ss;
+    }
+
+    public Dispose getDis() {
+        return dis;
+    }
+
+    public void setDis(Dispose dis) {
+        this.dis = dis;
+    }
 
     public Integer getScId() {
 
