@@ -7,7 +7,7 @@
     <title>客户销售管理</title>
     <meta charset="utf-8">
     <script type="text/javascript" src="${pageContext.request.contextPath }/sell/js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/sell/js/script.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/sell/js/script2.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- VENDOR CSS -->
@@ -57,24 +57,18 @@
         <!-- BASIC TABLE -->
         <div class="panel" style="width: 99%">
             <div class="panel-heading">
-                <h3 class="panel-title">销售机会管理</h3>
-            </div>
-            <div class="panel-heading" style="float: right;">
-                <a href="sell_bz"><div class="sell-div" style="font-size: 20px;height: 30px">帮助</div></a>
-                <a href="sell_add33"><div class="sell-div" style="font-size: 20px;height: 30px">新建</div></a>
+                <h3 class="panel-title">客户开发计划</h3>
             </div>
             <div class="panel-body" style="width: 100%;font-size: 25px">
                 <center>
-                        <form action="sell_select" method="post">
-                                    客户名称:<input name="companyname" type="text" value="${companyname}">&nbsp;&nbsp;&nbsp;
-                                    概要：<input type="text" name="cdescribe" value="${cdescribe}">&nbsp;&nbsp;&nbsp;
-                                    联系人:<input type="text" name="cname" value="${cname}">&nbsp;&nbsp;&nbsp;
-                        </form>
+                            客户名称:<input name="companyname" type="text" value="${companyname}">&nbsp;&nbsp;&nbsp;
+                            概要：<input type="text" name="cdescribe" value="${cdescribe}">&nbsp;&nbsp;&nbsp;
+                            联系人:<input type="text" name="cname" value="${cname}">&nbsp;&nbsp;&nbsp;
                 </center>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>编号</th>
+                        <th>编号1</th>
                         <th>客户名称</th>
                         <th>概要</th>
                         <th>联系人</th>
@@ -98,8 +92,12 @@
                                         dateStyle="default"
                                 /></td>
                                 <td>
-                                    <a href="sell_update?cid=${li.cid}">编辑销售机会</a>
-
+                                    <c:if test="${li.cstatus!=0}">
+                                         <a href="sell_page?cid=${li.cid}">编辑销售计划 </a>
+                                    </c:if>
+                                    <c:if test="${li.cstatus==0}">
+                                        该客户未指派 无法制定计划
+                                    </c:if>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -107,8 +105,8 @@
                         <td></td>
                         <td colspan="4" align="center">
                             <c:if test="${sessionScope.sellIndex != 1}">
-                                <a href="sell_change?index=1&p=1"><div class="sell-div">首页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellIndex-1}&p=1"><div class="sell-div">上一页</div></a>
+                                <a href="sell_change?index=1&p=2"><div class="sell-div">首页</div></a>
+                                <a href="sell_change?index=${sessionScope.sellIndex-1}&p=2"><div class="sell-div">上一页</div></a>
                             </c:if>
                             <c:if test="${sessionScope.sellIndex == 1 }">
                                 <a  onclick="alert('已经是第一页了')"><div class="sell-div">首页</div></a>
@@ -125,8 +123,8 @@
                             <a  onclick="alert('已经是最后页了')"><div class="sell-div">尾页</div></a>
                         </c:if>
                             <c:if test="${sessionScope.sellIndex != sessionScope.sellcount}">
-                                <a href="sell_change?index=${sessionScope.sellIndex+1}&p=1"><div class="sell-div">下一页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellcount}&p=1"><div class="sell-div">尾页</div></a>
+                                <a href="sell_change?index=${sessionScope.sellIndex+1}&p=2"><div class="sell-div">下一页</div></a>
+                                <a href="sell_change?index=${sessionScope.sellcount}&p=2"><div class="sell-div">尾页</div></a>
                             </c:if>
                         </td>
                     </tr>

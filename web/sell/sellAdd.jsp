@@ -9,7 +9,65 @@
     <script type="text/javascript">
         $(function(){
             $('tr:even').css("background","#6ecadc");
+            change();
+            sum();
         });
+        function change(){
+            var d = new Date();
+
+            var year = d.getFullYear();
+            var mon = d.getMonth()+1;
+            var day = d.getDate();
+            var ho = d.getHours();
+            var mm = d.getMinutes();
+            var ss = d.getSeconds();
+
+            if(ss<='9'){
+                ss = "0"+ss;
+            }
+            if(mm<='9'){
+                mm="0"+mm;
+            }
+            if(ho<='9'){
+                ho = "0"+ho;
+            }
+
+            var str = year+"-"+mon+"-"+day+" "+ho+":"+mm+":"+ss;
+
+            $('#date').val(str);
+
+            setTimeout("change()",1000);
+        }
+
+
+        function sum(){
+            $("#myform").submit(function () {
+                var companyname = $('#companyname').val();
+                var cdescribe = $('#cdescribe').val();
+                var cfrom = $('#cfrom').val();
+                var chance = $('#chance').val();
+
+                if(companyname==""){
+                    $('#companyname').focus();
+                    return false;
+                }
+                if(cdescribe==""){
+                    $('#cdescribe').focus();
+                    return false;
+                }
+                if(cfrom==""){
+                    $('#cfrom').focus();
+                    return false;
+                }
+                if(chance==""){
+                    $('#chance').focus();
+                    return false;
+                }
+                return true;
+
+            });
+        }
+
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -29,7 +87,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <style type="text/css">
         tr{
-            height: 30px;
+            height: 45px;
         }
         .name{
             text-align: center;
@@ -44,78 +102,109 @@
             top: 20px;
             left: 20px;
         }
+        table{
+            background-color: #c7ddef;
+            font-size: 25px;
+            width: 100%;
+        }
+        input{
+            height: 30px;
+        }
+        .sell-div{
+            height: 30px;
+            width: 80px;
+            background-color: #00aa00;
+            color: white;
+            text-align: center;
+            border: 1px chartreuse solid;
+            font-size: 17px;
+            border-radius: 20px;
+            float: left;
+            margin-right: 20px;
+            padding-bottom: 10px;
+        }
+        .cc{
+            position: absolute;
+            right: 30px;
+            height: 90px;
+        }
     </style>
 </head>
 <body>
-<!-- MAIN CONTENT -->
-<div class="main-content" style="width: 100%">
-    <div class="container-fluid" style="width: 100%">
-        <div class="col-md-6" style="width: 100%">
-            <!-- BASIC TABLE -->
-            <div class="panel" style="width: 99%">
-                <div class="panel-heading">
-                    <div id="cc">
-                        <h3 class="panel-title">销售机会管理>>>>新建</h3>
-                        <div style="height: 20px"></div>
-                        <form action="sell_add" method="post" id="myform">
-                            <table style="width: 80%">
-                                <tr>
-                                    <td class="name">客户名称</td>
-                                    <td>
-                                        <input name="cl.companyname" type="text" size="30">
-                                    </td>
+    <!-- MAIN CONTENT -->
+    <div class="main-content" style="width: 100%">
+        <div class="container-fluid" style="width: 100%">
+            <div class="col-md-6" style="width: 100%">
+                <!-- BASIC TABLE -->
+                <div class="panel" style="width: 99%;height: 700px">
+                    <div class="panel-heading">
+                        <div id="cc">
+                            <h3 class="panel-title">销售机会管理>>>>新建</h3>
+                            <div style="height: 20px"></div>
+                                <form action="${pagecontext.request.getcontextpath}/sell_add" method="post" id="myform">
+                                    <div class="cc">
+                                        <a href="${pagecontext.request.getcontextpath}/sell_show"><div class="sell-div">返回</div></a>
+                                        <div class="sell-div"><input type="submit" value="提交" style="background-color: transparent;border: 0px transparent solid; color: white;text-align: center;font-size: 17px"/></div>
 
-                                    <td class="name">机会来源</td>
-                                    <td>
-                                        <input name="cl.cfrom" type="text" size="30">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="name">概要</td>
-                                    <td colspan="3">
-                                        <input name="cl.cdescribe" type="text" size="50">
-                                    </td>
-                                </tr>
+                                    </div>
+                                    <div style="height: 50px"></div>
+                                    <center>
+                                    <table>
 
-                                <tr>
-                                    <td class="name">成功几率</td>
-                                    <td colspan="3">
-                                        <input name="cl.cfrom" type="text" size="30">
-                                    </td>
-                                </tr>
+                                        <tr>
+                                            <td class="name">客户名称</td>
+                                            <td>
+                                                <input name="c.companyname" id="companyname" type="text" size="30">&nbsp;&nbsp;<span style="color: red;">*</span>
+                                            </td>
 
-                                <tr>
-                                    <td class="name">联系人</td>
-                                    <td>
-                                        <input name="cl.cname" type="text" size="30">
-                                    </td>
-                                    <td class="name">联系人电话</td>
-                                    <td>
-                                        <input name="cl.ctel" type="text" size="30">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="name"rowspan="3">机会描述</td>
-                                    <td rowspan="4" colspan="3">
-                                        <textarea rows="6" cols="50" name="cl.chance"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>创建人</td>
-                                    <td><input type="text" name="user" value="${user.username}"></td>
+                                            <td class="name">机会来源</td>
+                                            <td>
+                                                <input name="c.cfrom" type="text" size="30">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">概要</td>
+                                            <td>
+                                                <input name="c.cdescribe" id="cdescribe" type="text" size="50">&nbsp;&nbsp;<span style="color: red;">*</span>
+                                            </td>
+                                            <td class="name">成功几率</td>
+                                            <td colspan="2">
+                                                <input name="c.success" id="cfrom" type="text" size="30">&nbsp;&nbsp;<span style="color: red;">*</span>
+                                            </td>
+                                        </tr>
 
-                                    <td>创建时间</td>
-                                    <TD><input type="datetime-local"/></TD>
-                                </tr>
-                            </table>
-                        </form>
+                                        <tr>
+                                            <td class="name">联系人</td>
+                                            <td>
+                                                <input name="c.cname" type="text" size="30">
+                                            </td>
+                                            <td class="name">联系人电话</td>
+                                            <td>
+                                                <input name="c.ctel" type="text" size="30">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">机会描述</td>
+                                            <td colspan="3">
+                                                <textarea rows="8" cols="50" name="c.chance" id="chance"></textarea>&nbsp;&nbsp;<span style="color: red;">*</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="name">创建人</td>
+                                            <td><input type="text" name="user" value="${user.username}" size="30" disabled="disabled">&nbsp;&nbsp;<span style="color: red;">*</span></td>
+                                            <td class="name">创建时间</td>
+                                            <TD><input name="c.ctime" id="date"/>&nbsp;&nbsp;<span style="color: red;">*</span></TD>
+                                        </tr>
+                                    </table>
+                                    </center>
+                                </form>
+
+                        </div>
                     </div>
                 </div>
+                <!-- END BASIC TABLE -->
             </div>
-            <!-- END BASIC TABLE -->
         </div>
-
     </div>
-</div>
 </body>
 </html>

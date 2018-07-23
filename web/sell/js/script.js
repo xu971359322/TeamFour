@@ -18,7 +18,7 @@ function change(){
         $.ajax({
             url:"sell_json",
             type:"post",
-            data:{"companyname":companyname,"cdescribe":cdescribe,"cname":cname},
+            data:{"companyname":companyname,"cdescribe":cdescribe,"cname":cname,"p":"1"},
             dataType:"json",
             success:function(data){
                 var str = "";

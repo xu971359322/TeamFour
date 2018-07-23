@@ -103,7 +103,7 @@
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="sell_show" target="ifr" class="">销售机会管理</a></li>
-									<li><a href="page-login.html" class="">客户开发计划</a></li>
+									<li><a href="sell_plan" target="ifr" class="">客户开发计划</a></li>
 								</ul>
 							</div>
 						</li>
@@ -124,7 +124,7 @@
 					<!-- OVERVIEW -->
 					<%--<div class="panel panel-headline">--%>
 					<div class="panel panel-headline">
-							<iframe name="ifr"  style="height: 700px;width: 100%;"frameborder="no">
+							<iframe name="ifr"  style="height: 1000px;width: 100%;"frameborder="no">
 
 
 
