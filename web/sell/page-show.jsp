@@ -44,9 +44,6 @@
        .sell-div a{
             text-decoration:none;
         }
-        table{
-            font-size: 25px;
-        }
 </style>
 </head>
 <body>
@@ -59,14 +56,10 @@
             <div class="panel-heading">
                 <h3 class="panel-title">客户开发计划</h3>
             </div>
-            <div class="panel-body" style="width: 100%;font-size: 25px">
-                <center>
-                            客户名称:<input name="companyname" type="text" value="${companyname}">&nbsp;&nbsp;&nbsp;
-                            概要：<input type="text" name="cdescribe" value="${cdescribe}">&nbsp;&nbsp;&nbsp;
-                            联系人:<input type="text" name="cname" value="${cname}">&nbsp;&nbsp;&nbsp;
-                </center>
-                <table class="table">
-                    <thead>
+            <div class="panel-body" style="width: 100%;">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
                     <tr>
                         <th>编号</th>
                         <th>客户名称</th>
@@ -77,7 +70,7 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody name="tbodyc">
+                    <tbody>
                         <c:forEach items="${sessionScope.sellList}" var="li" varStatus="k">
                             <tr>
 
@@ -102,37 +95,50 @@
                                 </td>
                             </tr>
                         </c:forEach>
-                    <tr>
-                        <td></td>
-                        <td colspan="4" align="center">
-                            <c:if test="${sessionScope.sellIndex != 1}">
-                                <a href="sell_change?index=1&p=2"><div class="sell-div">首页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellIndex-1}&p=2"><div class="sell-div">上一页</div></a>
-                            </c:if>
-                            <c:if test="${sessionScope.sellIndex == 1 }">
-                                <a  onclick="alert('已经是第一页了')"><div class="sell-div">首页</div></a>
-                                <a  onclick="alert('已经是第一页了')"><div class="sell-div">上一页</div></a>
-                            </c:if>
-                        </td>
-                        <td align="center">
-                            <c:if test="${sessionScope.sellIndex == sessionScope.sellcount}">
-                            <a  onclick="alert('已经是最后一页了')"><div class="sell-div">下一页</div></a>
-                            <a  onclick="alert('已经是最后页了')"><div class="sell-div">尾页</div></a>
-                        </c:if>
-                            <c:if test="${sessionScope.sellIndex != sessionScope.sellcount}">
-                                <a href="sell_change?index=${sessionScope.sellIndex+1}&p=2"><div class="sell-div">下一页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellcount}&p=2"><div class="sell-div">尾页</div></a>
-                            </c:if>
-                        </td>
-                    </tr>
                     </tbody>
-                </table>
+                    </table>
+                 </div>
+               </div>
+        <!-- END BASIC TABLE -->
             </div>
         </div>
-        <!-- END BASIC TABLE -->
-    </div>
-
     </div>
 </div>
+
+<script src="${pageContext.request.contextPath }/assets/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/sell/js/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="${pageContext.request.contextPath }/sell/js/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable({
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "全局搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "lengthMenu": [5,10,20,50,100],
+            "autoWidth":true
+        });
+    });
+</script>
 </body>
 </html>

@@ -56,7 +56,7 @@
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead style="width: 100%">
+                    <thead>
                             <tr>
                                 <th>编号</th>
                                 <th>客户名称</th>
