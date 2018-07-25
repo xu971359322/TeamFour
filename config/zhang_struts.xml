@@ -4,4 +4,21 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
+    <package name="show" namespace="/z" extends="struts-default">
+
+        <action name="zwz_*" method="{1}" class="org.java.web.managementAction">
+            <result name="showuser">/zwz/show.jsp</result>
+            <result name="showuserredact">/zwz/userredact.jsp</result>
+            <result name="update">/zwz/showalluser.jsp</result>
+            <result name="showcontacts">/zwz/showcontacts.jsp</result>
+            <result name="showchat">/zwz/showchat.jsp</result>
+            <result name="showorders">/zwz/showorders.jsp</result>
+            <result name="showdetail">/zwz/showdetail.jsp</result>
+            <result name="showclient">/zwz/showclient.jsp</result>
+            <result name="addmeasure">/zwz/showdrain.jsp</result>
+
+        </action >
+
+
+    </package>
 </struts>
