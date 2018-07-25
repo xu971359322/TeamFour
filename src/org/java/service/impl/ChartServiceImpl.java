@@ -60,4 +60,11 @@ public class ChartServiceImpl {
         return list;
     }
 
+    public List<Map<String,String>> showQuarter() {
+        Transaction transaction = HibernateUtil.getCurrentSession().beginTransaction();
+        List<Map<String, String>> list = dao.showQuarter();
+        transaction.commit();
+        return list;
+    }
+
 }

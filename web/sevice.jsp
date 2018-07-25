@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -76,7 +78,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.user.uname}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -103,11 +105,11 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-code"></i> <span>服务管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="page-profile.html" class="">服务创建</a></li>
-									<li><a href="page-login.html" class="">服务管理</a></li>
-									<li><a href="page-login.html" class="">服务处理</a></li>
-									<li><a href="page-login.html" class="">服务反馈</a></li>
-									<li><a href="page-login.html" class="">服务归档</a></li>
+									<li><a href="xu/serv_load.action" target="right" class="">服务创建</a></li>
+									<li><a href="xu/serv_give.action?status=1" target="right" class="">服务管理</a></li>
+									<li><a href="xu/serv_dis.action?status=2" target="right" class="">服务处理</a></li>
+									<li><a href="xu/serv_dealOver.action?status=3" target="right" class="">服务反馈</a></li>
+									<li><a href="xu/serv_last.action?status=4" target="right" class="">服务归档</a></li>
 								</ul>
 							</div>
 						</li>
@@ -123,133 +125,9 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">Icons</h3>
 					<div class="panel panel-headline demo-icons">
-						<div class="panel-heading">
-							<h3 class="panel-title">Linearicons</h3>
-							<p class="subtitle">For complete list, please visit <a href="https://linearicons.com/free" target="_blank">https://linearicons.com/free</a></p>
-						</div>
-						<div class="panel-body">
-							<ul class="list-unstyled row">
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-home"></span> <span class="cssclass">lnr lnr-home</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-thumbs-up"></span> <span class="cssclass">lnr lnr-thumbs-up</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-pencil"></span> <span class="cssclass">lnr lnr-pencil</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-magic-wand"></span> <span class="cssclass">lnr lnr-magic-wand</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-drop"></span> <span class="cssclass">lnr lnr-drop</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-lighter"></span> <span class="cssclass">lnr lnr-lighter</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-sun"></span> <span class="cssclass">lnr lnr-sun</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-heart"></span> <span class="cssclass">lnr lnr-heart</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-inbox"></span> <span class="cssclass">lnr lnr-inbox</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-trash"></span> <span class="cssclass">lnr lnr-trash</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-cart"></span> <span class="cssclass">lnr lnr-cart</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-user"></span> <span class="cssclass">lnr lnr-user</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-bookmark"></span> <span class="cssclass">lnr lnr-bookmark</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-map"></span> <span class="cssclass">lnr lnr-map</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-map-marker"></span> <span class="cssclass">lnr lnr-map-marker</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-location"></span> <span class="cssclass">lnr lnr-location</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-rocket"></span> <span class="cssclass">lnr lnr-rocket</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="lnr lnr-download"></span> <span class="cssclass">lnr lnr-download</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel panel-headline demo-icons">
-						<div class="panel-heading">
-							<h3 class="panel-title">Font Awesome</h3>
-							<p class="subtitle">For complete list, please visit <a href="http://fontawesome.io/icons/" target="_blank">http://fontawesome.io/icons/</a></p>
-						</div>
-						<div class="panel-body">
-							<ul class="list-unstyled row">
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-home"></span> <span class="cssclass">fa fa-home</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-download"></span> <span class="cssclass">fa fa-download</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-upload"></span> <span class="cssclass">fa fa-upload</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-shopping-cart"></span> <span class="cssclass">fa fa-shopping-cart</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-calendar"></span> <span class="cssclass">fa fa-calendar</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-map"></span> <span class="cssclass">fa fa-map</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-location"></span> <span class="cssclass">fa fa-location</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-credit-card"></span> <span class="cssclass">fa fa-credit-card</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-database"></span> <span class="cssclass">fa fa-database</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-bell"></span> <span class="cssclass">fa fa-bell</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-envelope"></span> <span class="cssclass">fa fa-envelope</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-thumbs-up"></span> <span class="cssclass">fa fa-thumbs-up</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-line-chart"></span> <span class="cssclass">fa fa-line-chart</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-map-marker"></span> <span class="cssclass">fa fa-map-marker</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-paper-plane-o"></span> <span class="cssclass">fa fa-paper-plane-o</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-search"></span> <span class="cssclass">fa fa-search</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-shopping-bag"></span> <span class="cssclass">fa fa-shopping-bag</span>
-								</li>
-								<li class="col-md-2 col-sm-4 col-xs-6">
-									<span class="fa fa-random"></span> <span class="cssclass">fa fa-random</span>
-								</li>
-							</ul>
+						<div class="panel-body" style="height: 800px">
+							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:1300px;height: 800px'></iframe>
 						</div>
 					</div>
 				</div>
@@ -259,9 +137,7 @@
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 		<footer>
-			<div class="container-fluid">
-				<p class="copyright">Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			</div>
+
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
@@ -270,6 +146,8 @@
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
+
+	<s:debug/>
 </body>
 
 </html>

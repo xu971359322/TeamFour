@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Serveallocation {
+public class Serveallocation  implements Serializable {
     private Integer saId;
 
     private Date saTime;
@@ -10,6 +11,16 @@ public class Serveallocation {
     private Integer scId;
 
     private String uid;
+
+    @Override
+    public String toString() {
+        return "Serveallocation{" +
+                "saId=" + saId +
+                ", saTime=" + saTime +
+                ", scId=" + scId +
+                ", uid='" + uid + '\'' +
+                '}';
+    }
 
     public Integer getSaId() {
         return saId;

@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Serveclient {
+public class Serveclient implements Serializable{
     private Integer scId;
 
     private String scDescribe;
@@ -14,6 +15,40 @@ public class Serveclient {
     private Integer sdId;
 
     private String uid;
+
+    private String cid;
+
+    private String sdRequest;
+
+    @Override
+    public String toString() {
+        return "Serveclient{" +
+                "scId=" + scId +
+                ", scDescribe='" + scDescribe + '\'' +
+                ", scSettime=" + scSettime +
+                ", scStatus=" + scStatus +
+                ", sdId=" + sdId +
+                ", uid='" + uid + '\'' +
+                ", cid='" + cid + '\'' +
+                ", sdRequest='" + sdRequest + '\'' +
+                '}';
+    }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+    public String getSdRequest() {
+        return sdRequest;
+    }
+
+    public void setSdRequest(String sdRequest) {
+        this.sdRequest = sdRequest;
+    }
 
     public Integer getScId() {
         return scId;

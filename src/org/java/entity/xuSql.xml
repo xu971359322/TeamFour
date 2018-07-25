@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="newService">
+        SELECT sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.Sc_settime time
+        FROM serveclient sc
+        WHERE sc_status=0;
+    </sql-query>
+
+    <sql-query name="dealService">
+        SELECT sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.Sc_settime time
+        FROM serveclient sc
+        WHERE sc_status=2;
+    </sql-query>
+
+    <sql-query name="getService">
+        SELECT sc.sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.Sc_settime time
+        FROM serveclient sc ,serveallocation sa
+        WHERE sc.sc_id = sa.sc_id
+        AND sc_status=1
+        and sa.uid =?
+        GROUP BY scid
+        ;
+
+    </sql-query>
+
+    <sql-query name="datelService">
+        SELECT sc.sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.sd_request
+        ,sc.Sc_settime TIME
+        ,( SELECT (SELECT uname FROM USER u WHERE u.uid=sa.uid)
+        FROM serveallocation sa WHERE sa.sc_id=sc.sc_id
+        ORDER BY sa_time DESC LIMIT 1) gname
+        ,( SELECT sa_time
+        FROM serveallocation sa WHERE sa.sc_id=sc.sc_id
+        ORDER BY sa_time DESC LIMIT 1) gettime
+        FROM serveclient sc WHERE sc.sc_id =?
+    </sql-query>
+
+    <sql-query name="overService">
+        SELECT di_id,di_time,di_content,di_result,faction
+        ,(SELECT uname FROM USER u WHERE u.uid=di.uid) dealname
+        ,t.*
+        FROM dispose di ,( SELECT sc.sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.sd_request
+        ,sc.Sc_settime TIME
+        ,( SELECT (SELECT uname FROM USER u WHERE u.uid=sa.uid)
+        FROM serveallocation sa WHERE sa.sc_id=sc.sc_id
+        ORDER BY sa_time DESC LIMIT 1) gname
+        ,( SELECT sa_time
+        FROM serveallocation sa WHERE sa.sc_id=sc.sc_id
+        ORDER BY sa_time DESC LIMIT 1) gettime
+        FROM serveclient sc WHERE sc.sc_id =?) t
+        WHERE di.sc_id =t.scid
+        ORDER BY di_time DESC
+        LIMIT 1;
+    </sql-query>
+
+    <!--查看归档-->
+    <sql-query name="selLast">
+        SELECT sc_id scid
+        ,(SELECT companyname FROM CLIENT c WHERE c.cid =sc.cid) companyname
+        ,sc_describe scdescribe
+        ,(SELECT sd_name FROM servedetail sd WHERE sd.sd_id =sc.sd_id) sdname
+        ,(SELECT uname FROM USER u WHERE u.uid=sc.uid) uname
+        ,sc.Sc_settime time
+        FROM serveclient sc
+        WHERE sc_status=3
+        ;
+    </sql-query>
+</hibernate-mapping>

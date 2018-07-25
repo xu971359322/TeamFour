@@ -2,11 +2,9 @@ package org.java.dao.impl;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.java.dao.ChartDao;
 import org.java.util.HibernateUtil;
-import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -16,7 +14,7 @@ public class ChartDaoImpl implements ChartDao{
 
     public List<Map<String,String>> getYear() {
         Session session = HibernateUtil.getCurrentSession();
-        String sql = "select o.cid,SUBSTRING(otime,1,4) AS year from orders o GROUP BY year ORDER BY year DESC";
+        String sql = "select o.cid,SUBSTRING(otime,1,4) AS year from orders o GROUP BY year ORDER BY year asc";
         List<Map<String, String>> list = session.createSQLQuery(sql).setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
         for (Map<String, String> info : list) {
             System.out.println(info);
@@ -130,13 +128,18 @@ public class ChartDaoImpl implements ChartDao{
         for (Map<String, String> info : list) {
             System.out.println(info.get("companyname"));
         }
-
         return list;
     }
 
     public List<Map<String,String>> showChartLSCount(){
         Session session = HibernateUtil.getCurrentSession();
         List<Map<String, String>> list= session.getNamedQuery("showLSCount").setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
+        return list;
+    }
+
+    public List<Map<String,String>> showQuarter(){
+        Session session = HibernateUtil.getCurrentSession();
+        List<Map<String, String>> list= session.getNamedQuery("showQuarter").setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP).list();
         return list;
     }
 }

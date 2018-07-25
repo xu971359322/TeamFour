@@ -125,7 +125,9 @@
                         <!-- TABLE STRIPED -->
                         <div class="panel">
                             <div class="panel-heading">
-                                <span id="alertShow111" style="float: right;cursor:pointer;text-decoration: underline;color:darkblue;">图表数据</span>
+                                &nbsp;&nbsp; <a href="${pageContext.request.contextPath}/statistice.jsp" style="font-size: 20px;float:right;" >&nbsp;&nbsp;返回首页&nbsp;&nbsp;</a>
+                                &nbsp;&nbsp; <a href="${pageContext.request.contextPath}/p/ping_showExcel" style="font-size: 20px;float:right;" >&nbsp;&nbsp;下载Excel&nbsp;&nbsp;</a>
+                                &nbsp;&nbsp;  <a id="alertShow111" style="float: right;font-size: 20px;cursor: pointer;">图表数据</a>&nbsp;&nbsp;
                                 <h3 class="panel-title">客户贡献分析</h3><br>
                                 <form action="${pageContext.request.contextPath}/p/ping_search" method="post" class="form-inline" role="form" >
                                     <div class="form-group">
@@ -161,7 +163,8 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <s:iterator value="#request.list" var="k" status="st" >
+                                            <s:iterator value="%{#session.list}" var="k" status="st" >
+                                                <s:if test="#k.sum!=0">
                                                 <tr>
                                                     <td>${st.count}</td>
                                                     <td><s:property value="#k.companyname"/></td>
@@ -174,6 +177,7 @@
                                                     </s:if>
                                                     <td><s:property value="#k.year"/></td>
                                                 </tr>
+                                                </s:if>
                                             </s:iterator>
                                             </tbody>
                                         </table>
@@ -193,7 +197,7 @@
     <div class="clearfix"></div>
     <footer>
         <div class="container-fluid">
-            <p class="copyright">Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+
         </div>
     </footer>
 </div>
@@ -238,7 +242,7 @@
                     "sSortDescending": ": 以降序排列此列"
                 }
             },
-            "lengthMenu": [5,10,20,50,100],
+            "lengthMenu": [10,20,30,50,100],
             "autoWidth":true
         });
     });

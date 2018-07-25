@@ -229,9 +229,6 @@
         </div>
     </div>
 
-
-
-
     <div class="clearfix"></div>
     <footer>
         <div class="container-fluid">

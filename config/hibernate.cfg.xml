@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd" >
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -13,8 +15,13 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <property name="hibernate.current_session_context_class">thread</property>
-<!--
-        <mapping resource="org/java/entity/User.hbm.xml"></mapping>-->
+
         <mapping resource="org/java/entity/sql.xml"/>
+        <mapping resource="org/java/entity/User.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveclient.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveallocation.hbm.xml"/>
+        <mapping resource="org/java/entity/Dispose.hbm.xml"/>
+        <mapping resource="org/java/entity/xuSql.xml"/>
+
     </session-factory>
 </hibernate-configuration>

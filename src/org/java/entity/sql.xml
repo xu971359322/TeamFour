@@ -30,5 +30,15 @@
             END AS stauts
         FROM `client` c GROUP BY stauts
     </sql-query>
-
+    <sql-query name="showQuarter">
+        SELECT SUBSTRING(otime,1,4) AS year,
+        CASE ((MONTH(os.otime)-1) DIV 3) +1
+        WHEN 1 THEN '第一季度'
+        WHEN 2 THEN '第二季度'
+        WHEN 3 THEN '第三季度'
+        WHEN 4 THEN '第四季度'
+        END AS result,
+        os.otime AS time,CAST(sum(os.ocount) as char(10))  AS count
+        FROM orders os,goods gs WHERE gs.gid=os.gid  GROUP BY result,year order by year desc
+    </sql-query>
 </hibernate-mapping>

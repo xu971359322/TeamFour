@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="secondproject@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="secondproject">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bjsxteasyui"/>
+    <schema id="4" parent="1" name="info"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="jsp_fiction"/>
+    <schema id="7" parent="1" name="jsp_shopping"/>
+    <schema id="8" parent="1" name="jsp_staff"/>
+    <schema id="9" parent="1" name="library_use"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="sakila"/>
+    <schema id="13" parent="1" name="shopcar"/>
+    <schema id="14" parent="1" name="srtuts_up"/>
+    <schema id="15" parent="1" name="test"/>
+    <schema id="16" parent="1" name="world"/>
+    <table id="17" parent="2" name="chance"/>
+    <table id="18" parent="2" name="clienphone"/>
+    <table id="19" parent="2" name="client"/>
+    <table id="20" parent="2" name="clientdetail"/>
+    <table id="21" parent="2" name="contact"/>
+    <table id="22" parent="2" name="dispose"/>
+    <table id="23" parent="2" name="entrepot"/>
+    <table id="24" parent="2" name="goods"/>
+    <table id="25" parent="2" name="goodssave"/>
+    <table id="26" parent="2" name="leverclient"/>
+    <table id="27" parent="2" name="loseclient"/>
+    <table id="28" parent="2" name="orders"/>
+    <table id="29" parent="2" name="plan"/>
+    <table id="30" parent="2" name="provincial"/>
+    <table id="31" parent="2" name="serveallocation"/>
+    <table id="32" parent="2" name="serveclient"/>
+    <table id="33" parent="2" name="servedetail"/>
+    <table id="34" parent="2" name="user"/>
+    <column id="35" parent="17" name="ch_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="17" name="ch_time">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="17" name="cid">
+      <Position>3</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="17" name="uid">
+      <Position>4</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="39" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ch_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="18" name="Cp_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="18" name="Cp_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="18" name="Cp_gender">
+      <Position>3</Position>
+      <DataType>char(2)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="18" name="Cp_post">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="18" name="Cp_tel">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="18" name="Cp_phone">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="46" parent="18" name="Cp_ramark">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="47" parent="18" name="cid">
+      <Position>8</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="48" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Cp_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="19" name="cid">
+      <Position>1</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="19" name="companyname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="19" name="cfrom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="52" parent="19" name="success">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="19" name="cname">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="54" parent="19" name="ctel">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="55" parent="19" name="chance">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="19" name="cdescribe">
+      <Position>8</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="19" name="ctime">
+      <Position>9</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="19" name="ctype">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="59" parent="19" name="cstatus">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="60" parent="19" name="uid">
+      <Position>12</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="61" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="20" name="cd_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="20" name="place">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="20" name="manager">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="20" name="Lv_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="20" name="satisfaction">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="20" name="credit">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="20" name="placeDetail">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="20" name="email">
+      <Position>8</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="20" name="companytel">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="20" name="fax">
+      <Position>10</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="20" name="url">
+      <Position>11</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="20" name="busineslicense">
+      <Position>12</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="74" parent="20" name="legalperson">
+      <Position>13</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="20" name="loginprice">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="76" parent="20" name="yearprice">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="77" parent="20" name="openback">
+      <Position>16</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="20" name="backNo">
+      <Position>17</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="20" name="governmentNo">
+      <Position>18</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="80" parent="20" name="countryNo">
+      <Position>19</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="81" parent="20" name="cid">
+      <Position>20</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="82" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cd_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="83" parent="21" name="Co_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="84" parent="21" name="Co_time">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="21" name="Co_path">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="21" name="Co_describe">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="21" name="Co_ramark">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="88" parent="21" name="Co_detail">
+      <Position>6</Position>
+      <DataType>varchar(250)|0</DataType>
+    </column>
+    <column id="89" parent="21" name="cid">
+      <Position>7</Position>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <key id="90" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Co_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="91" parent="22" name="di_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="92" parent="22" name="di_time">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="22" name="di_content">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="22" name="di_result">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="95" parent="22" name="faction">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="96" parent="22" name="sc_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="97" parent="22" name="uid">
+      <Position>7</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="98" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>di_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="99" parent="23" name="en_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="100" parent="23" name="en_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="101" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>en_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="102" parent="24" name="gid">
+      <Position>1</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="24" name="gname">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="104" parent="24" name="gtype">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="24" name="glever">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="24" name="gprice">
+      <Position>5</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="24" name="gremark">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="108" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>gid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="109" parent="25" name="gs_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="110" parent="25" name="gs_count">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="25" name="gs_path">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="112" parent="25" name="gs_describe">
+      <Position>4</Position>
+      <DataType>varchar(250)|0</DataType>
+    </column>
+    <column id="113" parent="25" name="en_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="114" parent="25" name="g_id">
+      <Position>6</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="115" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>gs_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="116" parent="26" name="lv_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="117" parent="26" name="lv_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="118" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lv_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="119" parent="27" name="lc_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="120" parent="27" name="lc_content">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="121" parent="27" name="lc_time">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="27" name="cid">
+      <Position>4</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="123" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lc_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="124" parent="28" name="oid">
+      <Position>1</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="125" parent="28" name="otime">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="126" parent="28" name="opath">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="28" name="ostutas">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="128" parent="28" name="ocount">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="28" name="cid">
+      <Position>6</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="28" name="gid">
+      <Position>7</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="131" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>oid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="132" parent="29" name="pid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="133" parent="29" name="pcontent">
+      <Position>2</Position>
+      <DataType>varchar(250)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="134" parent="29" name="ptime">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="29" name="presult">
+      <Position>4</Position>
+      <DataType>varchar(250)|0</DataType>
+    </column>
+    <column id="136" parent="29" name="cid">
+      <Position>5</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="137" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="138" parent="30" name="pid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="139" parent="30" name="Provincial">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="140" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="141" parent="31" name="sa_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="142" parent="31" name="sa_time">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="143" parent="31" name="sc_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="144" parent="31" name="uid">
+      <Position>4</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="145" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sa_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="146" parent="32" name="sc_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="147" parent="32" name="sc_describe">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="148" parent="32" name="Sc_settime">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="149" parent="32" name="sc_status">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="150" parent="32" name="sd_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="32" name="uid">
+      <Position>6</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="32" name="sd_request">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="153" parent="32" name="cid">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="154" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sc_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="155" parent="33" name="sd_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="156" parent="33" name="sd_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="157" parent="33" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sd_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="158" parent="34" name="uid">
+      <Position>1</Position>
+      <DataType>varchar(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="159" parent="34" name="username">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="160" parent="34" name="uname">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="161" parent="34" name="pwd">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="162" parent="34" name="identity">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="163" parent="34" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

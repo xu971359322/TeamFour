@@ -25,6 +25,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.85" level="application_server_libraries" />
     <orderEntry type="library" name="antlr-2.7.7" level="project" />
-    <orderEntry type="library" name="asm-3.3" level="project" />
+    <orderEntry type="library" name="teamFour" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2" level="project" />
+    <orderEntry type="library" name="commons-logging-1.0.4" level="project" />
+    <orderEntry type="library" name="junit-4.7-src" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.7.0" level="project" />
+    <orderEntry type="library" name="ezmorph-1.0.3" level="project" />
+    <orderEntry type="library" name="json-lib-2.1" level="project" />
+    <orderEntry type="library" name="commons-lang-2.3" level="project" />
+    <orderEntry type="library" name="commons-io" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.13" level="project" />
   </component>
 </module>

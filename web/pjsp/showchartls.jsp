@@ -175,11 +175,11 @@
                                                 <a href="${pageContext.request.contextPath}/p/ping_changePage?pageNo=1" class="btn btn-success">首页&nbsp;</a>
                                                 <a href="${pageContext.request.contextPath}/p/ping_changePage?pageNo=${pageNo-1}" class="btn btn-success">上一页&nbsp;</a>
                                             </c:if>
-                                            <c:if test="${pageNo==maxPage}">
+                                            <c:if test="${pageNo==maxPage||count==0}">
                                                 <button class="btn btn-success" disabled="disabled">下一页</button>&nbsp;
                                                 <button class="btn btn-success" disabled="disabled">尾页</button>&nbsp;
                                             </c:if>
-                                            <c:if test="${pageNo!=maxPage}">
+                                            <c:if test="${pageNo!=maxPage&&count!=0}">
                                                 <a href="${pageContext.request.contextPath}/p/ping_changePage?pageNo=${pageNo+1}" class="btn btn-success">下一页&nbsp;</a>
                                                 <a href="${pageContext.request.contextPath}/p/ping_changePage?pageNo=${maxPage}" class="btn btn-success">尾页&nbsp;</a>
                                             </c:if>

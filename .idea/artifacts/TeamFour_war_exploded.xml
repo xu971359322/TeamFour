@@ -7,10 +7,14 @@
           <element id="module-output" name="TeamFour" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Struts2" />
-          <element id="library" level="project" name="Hibernate" />
+          <element id="library" level="project" name="lib1" />
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="commons-collections-3.2" />
+          <element id="library" level="project" name="jxl" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="TeamFour/web/Web" />
+      <element id="javaee-facet-resources" facet="TeamFour/web/Web" />
       <element id="javaee-facet-resources" facet="TeamFour/web/Web" />
     </root>
   </artifact>

@@ -14,10 +14,10 @@
     <constant name="struts.i18n.encoding" value="UTF-8"></constant>
     <constant name="struts.devMode" value="true"/>
 
-  <!--  <package name="login" namespace="/" extends="struts-default">
+    <package name="login" namespace="/" extends="struts-default">
         <action name="login_*" class="org.java.web.LoginAction" method="{1}">
             <result name="main">main.jsp</result>
             <result name="login">index.jsp</result>
         </action>
-    </package>-->
+    </package>
 </struts>
