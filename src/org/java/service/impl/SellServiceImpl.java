@@ -50,7 +50,7 @@ public class SellServiceImpl implements SellService {
         return dao.checkC(cid);
     }
     @Override
-    public String userName1(String cid){
+    public User userName1(String cid){
         Transaction tran = HibernateUtil.getCurrentSession().beginTransaction();
         return dao.userName1(cid);
     }
@@ -82,11 +82,6 @@ public class SellServiceImpl implements SellService {
         return dao.zpName(cid);
     }
 
-    @Override
-    public String userZpName(String uid){
-        Transaction tran = HibernateUtil.getCurrentSession().beginTransaction();
-        return  dao.userZpName(uid);
-    }
 
     @Override
     public void palAdd(Plan p) {

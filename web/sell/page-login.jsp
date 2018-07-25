@@ -135,7 +135,6 @@
                 <div class="panel-heading" style="height: 80%">
                         <h3 class="panel-title">销售机会管理>>>>制定计划</h3>
                             <div class="cc">
-                                ${sessionScope.clientUser.ctype}
                                 <c:if test="${sessionScope.clientUser.ctype==0}">
                                     <a href="${pagecontext.request.getcontextpath}/sell_kfUp?zt=2"><div class="sell-div">终止开发</div></a>
                                     <a href="${pagecontext.request.getcontextpath}/sell_plan"><div class="sell-div">返回</div></a>
@@ -159,7 +158,7 @@
 
                                 <c:if test="${sessionScope.clientUser.ctype==4}">
                                     <a href="${pagecontext.request.getcontextpath}/sell_plan"><div class="sell-div">返回</div></a>&nbsp;
-                                    该客户已流失 不能执行任何操作
+                                    <span style="font-size: 15px">该客户已流失，请前往流失管理处核实</span>
                                 </c:if>
                             </div>
                     <div style="height: 50px"></div>
@@ -206,7 +205,7 @@
                                     </tr>
                                     <tr>
                                         <td class="name">创建人</td>
-                                        <td><span>${username}</span></td>
+                                        <td><span>${sellUser.username}</span></td>
                                         <td class="name">创建时间</td>
                                         <TD><span>
                                             <fmt:formatDate
@@ -219,7 +218,7 @@
                                     <tr>
                                         <td class="name">指派给</td>
                                         <td>
-                                            ${sessionScope.userZpName}
+                                            ${sellUser.uname}
                                         </td>
                                         <td class="name">指派时间</td>
                                         <TD> <fmt:formatDate
@@ -247,7 +246,7 @@
                                                     <td><input value="${li.presult}" type="text" name="presult"></td>
                                                     <td>
                                                         <c:if test="${sessionScope.clientUser.ctype==4}">
-
+                                                            用户已流失，请前往流失管理处核实
                                                         </c:if>
                                                         <c:if test="${sessionScope.clientUser.ctype!=4}">
                                                         <div class="sell-div" style="width: 180px"><input type="submit" value="提交" style="background:transparent; border:0px;color: white;text-align: center;font-size: 17px"/></div>
@@ -259,11 +258,10 @@
                                         </c:forEach>
                                     </table>
                                 <div style="height: 5px"></div>
-
-                                <c:if test="${sessionScope.clienUser.ctype==4}">
+                                <c:if test="${sessionScope.clientUser.ctype==4}">
                                     <h3>该客户已流失 不能执行任何操作</h3>
                                 </c:if>
-                                <c:if test="${sessionScope.clienUser.ctype!=4}">
+                                <c:if test="${sessionScope.clientUser.ctype!=4}">
                                     <form action="${pagecontext.request.getcontextpath}/sell_jhAdd" method="post">
                                         <table><tr>
                                             <th class="name">日期</th>

@@ -51,8 +51,8 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
 
         request.getSession().setAttribute("sellList",list);
         request.getSession().setAttribute("sellIndex",index);
-
         String p =request.getParameter("p");
+
         if(p.equals("1")){
             return "show";
         }else{
@@ -64,8 +64,6 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
     //分页搜索
     public void json() throws Exception{
         response.setContentType("text/html;charset=utf-8");
-        int index = 1;
-        int size = 10;
         String cname=request.getParameter("cname");
         String companyname=request.getParameter("companyname");
         String cdescribe=request.getParameter("cdescribe");
@@ -119,7 +117,7 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
         User uid = (User) request.getSession().getAttribute("user");
         c.setCtype(0);
         c.setUid(uid.getUid());
-        c.setCstatus(0);
+        c.setCstatus(3);
         service.add(c);
         return show();
     }
@@ -128,11 +126,11 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
         List<User> userList = service.fq();
         String cid = request.getParameter("cid");
 
-        String username = service.userName1(cid);
+        User sellUser = service.userName1(cid);
         Client clientUser = service.checkC(cid);
 
         request.getSession().setAttribute("sell_cid",cid);
-        request.getSession().setAttribute("username",username);
+        request.getSession().setAttribute("sellUser",sellUser);
         request.getSession().setAttribute("clienUser",clientUser);
         request.getSession().setAttribute("userList",userList);
 
@@ -144,14 +142,23 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
         String zp2 = request.getParameter("zp");
         String string = request.getParameter("ctime");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        User sellUser = service.userName1(cid);
+        Client clientUser = service.checkC(cid);
+        service.zp(cid);
+
         Chance chan = new Chance();
         chan.setChTime(sdf.parse(string));
         chan.setUid(zp2);
         chan.setCid(cid);
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println( service.zp(cid));
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         service.chanAdd(chan);
+        List<User> userList = service.fq();
+
+        request.getSession().setAttribute("sell_cid",cid);
+        request.getSession().setAttribute("sellUser",sellUser);
+        request.getSession().setAttribute("clienUser",clientUser);
+        request.getSession().setAttribute("userList",userList);
+
 
         return show();
     }
@@ -176,14 +183,12 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
         }
         List<Plan> planList = service.planListp(cid);
 
-        String username = service.userName1(cid);
+        User sellUser = service.userName1(cid);
         Client clientUser = service.checkC(cid);
         Chance chance = service.zpName(cid);
-        String userZpName = service.userZpName(chance.getUid());
 
         request.getSession().setAttribute("cid",cid);
-        request.getSession().setAttribute("username",username);
-        request.getSession().setAttribute("userZpName",userZpName);
+        request.getSession().setAttribute("sellUser",sellUser);
         request.getSession().setAttribute("clientUser",clientUser);
         request.getSession().setAttribute("ctime",chance.getChTime());
         request.getSession().setAttribute("planList",planList);
@@ -235,10 +240,10 @@ public class SellAction extends SellBaseAction implements ServletRequestAware,Se
 
         Chance chance = service.zpName(cid);
         Client clientUser = service.checkC(cid);
-        String userZpName = service.userZpName(chance.getUid());
+        User sellUser = service.userName1(cid);
 
         request.getSession().setAttribute("cid",cid);
-        request.getSession().setAttribute("userZpName",userZpName);
+        request.getSession().setAttribute("sellUser",sellUser);
         request.getSession().setAttribute("clientUser",clientUser);
         request.getSession().setAttribute("ctime",chance.getChTime());
         request.getSession().setAttribute("planList",planList);

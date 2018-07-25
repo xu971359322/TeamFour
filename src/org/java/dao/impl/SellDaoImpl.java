@@ -28,9 +28,17 @@ public class SellDaoImpl implements SellDao {
         if (cdescribe!=null&&!cdescribe.equals("")){
             c.add(Restrictions.ilike("cdescribe",cdescribe,MatchMode.ANYWHERE));
         }
-        c.setFirstResult((index-1)*size);
-        c.setMaxResults(index*size);
+        //c.setFirstResult((index-1)*size);
+        //c.setMaxResults(index*size);
         List<Client> list = c.list();
+
+        System.out.println("--------------------------------------------------");
+        System.out.println(list.size());
+        System.out.println("SELECT * FROM CLIENT LIMIT "+(index-1)*size+","+index*size+"");
+        System.out.println("index值\t"+index);
+        System.out.println("index-1*size\t"+(index-1)*size);
+        System.out.println("index*size\t"+index*size);
+        System.out.println("--------------------------------------------------");
         return list;
     }
 
@@ -83,7 +91,7 @@ public class SellDaoImpl implements SellDao {
     }
 
     @Override
-    public String userName1(String cid) {
+    public User userName1(String cid) {
         Session ses = HibernateUtil.getCurrentSession();
         String hql = "FROM Client WHERE cid =:cid";
         Query query = ses.createQuery(hql);
@@ -98,7 +106,6 @@ public class SellDaoImpl implements SellDao {
         Session ses = HibernateUtil.getCurrentSession();
         String hql = "update Client set cstatus=1 where cid=:cid";
         Query query = ses.createQuery(hql);
-        System.out.println("SELECT * FROM CLIENT WHERE cid='"+cid+"'");
         query.setParameter("cid",cid);
         int rows = query.executeUpdate();
         return rows;
@@ -133,15 +140,6 @@ public class SellDaoImpl implements SellDao {
             ch = list.get(0);
         }
         return ch;
-    }
-
-    @Override
-    public String userZpName(String uid) {
-        Session ses = HibernateUtil.getCurrentSession();
-        Criteria c = ses.createCriteria(User.class);
-        c.add(Restrictions.lt("uid",uid));
-        List<User> list = c.list();
-        return list.get(0).getUname();
     }
 
     @Override
@@ -186,14 +184,14 @@ public class SellDaoImpl implements SellDao {
     }
 
 
-    public String userName(String uid){
+    public User userName(String uid){
         Session ses = HibernateUtil.getCurrentSession();
         String hql = "from User where uid=:id";
         Query query = ses.createQuery(hql);
         query.setParameter("id",uid);
         List<User> list = query.list();
         User u = list.get(0);
-        return u.getUsername();
+        return u;
     }
 
 

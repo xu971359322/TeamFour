@@ -193,9 +193,15 @@
                                     <tr>
                                         <td class="name">指派给</td>
                                         <td>
-                                            <select name="zp" style="width: 200px;">
+                                            <select name="zp" style="width: 200px;">&nbsp;&nbsp;<span style="color: red;">*</span>
+                                                <option value="0">请选择...</option>
                                                 <c:forEach items="${sessionScope.userList}" var="cc">
-                                                    <option  value="${cc.uid}">${cc.uname}</option>
+                                                    <c:if test="${sessionScope.sellUser.uid==cc.uid}">
+                                                        <option  value="${cc.uid}" selected="selected">${cc.uname}</option>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.sellUser.uid!=cc.uid}">
+                                                        <option  value="${cc.uid}">${cc.uname}</option>
+                                                    </c:if>
                                                 </c:forEach>
                                             </select>
                                         <td class="name">指派时间</td>

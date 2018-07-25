@@ -18,7 +18,7 @@ public interface SellService {
 
     public Client checkC(String cid);
 
-    public String userName1(String cid);
+    public User userName1(String cid);
 
     public int zp(String cid);
 
@@ -27,8 +27,6 @@ public interface SellService {
     public List<Plan> planListp(String cid);
 
     public Chance zpName(String cid);
-
-    public String userZpName(String uid);
 
     public void palAdd(Plan p);
 

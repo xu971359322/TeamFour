@@ -68,7 +68,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>编号1</th>
+                        <th>编号</th>
                         <th>客户名称</th>
                         <th>概要</th>
                         <th>联系人</th>
@@ -93,10 +93,11 @@
                                 /></td>
                                 <td>
                                     <c:if test="${li.cstatus!=0}">
-                                         <a href="sell_page?cid=${li.cid}">编辑销售计划 </a>
+
+                                        <a href="sell_page?cid=${li.cid}"><img src="${pagecontext.request.getcontextpath}/sell/img/bj.jpg" style="height: 35px"></a>
                                     </c:if>
                                     <c:if test="${li.cstatus==0}">
-                                        该客户未指派 无法制定计划
+                                        该客户未指派
                                     </c:if>
                                 </td>
                             </tr>
@@ -112,10 +113,6 @@
                                 <a  onclick="alert('已经是第一页了')"><div class="sell-div">首页</div></a>
                                 <a  onclick="alert('已经是第一页了')"><div class="sell-div">上一页</div></a>
                             </c:if>
-                            <a href="#"><div class="sell-div"></div></a>
-                            <a href="#"><div class="sell-div"></div></a>
-                            <a href="#"><div class="sell-div"></div></a>
-
                         </td>
                         <td align="center">
                             <c:if test="${sessionScope.sellIndex == sessionScope.sellcount}">

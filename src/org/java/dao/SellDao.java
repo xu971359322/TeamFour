@@ -19,7 +19,7 @@ public interface SellDao {
 
     public Client checkC(String cid);
 
-    public String userName1(String cid);
+    public User userName1(String cid);
 
     public int zp(String cid);
 
@@ -28,8 +28,6 @@ public interface SellDao {
     public List<Plan> planList(String cid);
 
     public Chance zpName(String cid);
-
-    public String userZpName(String uid);
 
     public void palAdd(Plan p);
 

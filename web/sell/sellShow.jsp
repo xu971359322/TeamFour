@@ -6,24 +6,21 @@
 <head>
     <title>客户销售管理</title>
     <meta charset="utf-8">
-    <script type="text/javascript" src="${pageContext.request.contextPath }/sell/js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/sell/js/script.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-    <link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/main.css">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/demo.css">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath }/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="${pageContext.request.contextPath }/assets/img/favicon.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/sell/js/assets/js/dataTables/dataTables.bootstrap.css">
+
+
     <style type="text/css">
         table,tr,td,th{
             text-align: center;
@@ -44,9 +41,6 @@
        .sell-div a{
             text-decoration:none;
         }
-        table{
-            font-size: 25px;
-        }
 </style>
 </head>
 <body>
@@ -59,85 +53,92 @@
             <div class="panel-heading">
                 <h3 class="panel-title">销售机会管理</h3>
             </div>
-            <div class="panel-heading" style="float: right;">
-                <a href="sell_bz"><div class="sell-div" style="font-size: 20px;height: 30px">帮助</div></a>
-                <a href="sell_add33"><div class="sell-div" style="font-size: 20px;height: 30px">新建</div></a>
-            </div>
-            <div class="panel-body" style="width: 100%;font-size: 25px">
-                <center>
-                        <form action="sell_select" method="post">
-                                    客户名称:<input name="companyname" type="text" value="${companyname}">&nbsp;&nbsp;&nbsp;
-                                    概要：<input type="text" name="cdescribe" value="${cdescribe}">&nbsp;&nbsp;&nbsp;
-                                    联系人:<input type="text" name="cname" value="${cname}">&nbsp;&nbsp;&nbsp;
-                        </form>
-                </center>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>客户名称</th>
-                        <th>概要</th>
-                        <th>联系人</th>
-                        <th>联系电话</th>
-                        <th>创建时间</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody name="tbodyc">
-                        <c:forEach items="${sessionScope.sellList}" var="li" varStatus="k">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead style="width: 100%">
                             <tr>
-
-                                <td>${k.index+1+ (sessionScope.sellIndex-1)*sessionScope.sellSize}</td>
-                                <td>${li.companyname}</td>
-                                <td>${li.cdescribe}</td>
-                                <td>${li.cname}</td>
-                                <td>${li.ctel}</td>
-                                <td><fmt:formatDate
-                                        type="date"
-                                        value="${li.ctime}"
-                                        dateStyle="default"
-                                /></td>
-                                <td>
-                                    <a href="sell_update?cid=${li.cid}">编辑销售机会</a>
-
-                                </td>
+                                <th>编号</th>
+                                <th>客户名称</th>
+                                <th>概要</th>
+                                <th>联系人</th>
+                                <th>联系电话</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
                             </tr>
-                        </c:forEach>
-                    <tr>
-                        <td></td>
-                        <td colspan="4" align="center">
-                            <c:if test="${sessionScope.sellIndex != 1}">
-                                <a href="sell_change?index=1&p=1"><div class="sell-div">首页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellIndex-1}&p=1"><div class="sell-div">上一页</div></a>
-                            </c:if>
-                            <c:if test="${sessionScope.sellIndex == 1 }">
-                                <a  onclick="alert('已经是第一页了')"><div class="sell-div">首页</div></a>
-                                <a  onclick="alert('已经是第一页了')"><div class="sell-div">上一页</div></a>
-                            </c:if>
-                            <a href="#"><div class="sell-div"></div></a>
-                            <a href="#"><div class="sell-div"></div></a>
-                            <a href="#"><div class="sell-div"></div></a>
-
-                        </td>
-                        <td align="center">
-                            <c:if test="${sessionScope.sellIndex == sessionScope.sellcount}">
-                            <a  onclick="alert('已经是最后一页了')"><div class="sell-div">下一页</div></a>
-                            <a  onclick="alert('已经是最后页了')"><div class="sell-div">尾页</div></a>
-                        </c:if>
-                            <c:if test="${sessionScope.sellIndex != sessionScope.sellcount}">
-                                <a href="sell_change?index=${sessionScope.sellIndex+1}&p=1"><div class="sell-div">下一页</div></a>
-                                <a href="sell_change?index=${sessionScope.sellcount}&p=1"><div class="sell-div">尾页</div></a>
-                            </c:if>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${sessionScope.sellList}" var="li" varStatus="k">
+                                <tr>
+                                    <td>${k.index+1+ (sessionScope.sellIndex-1)*sessionScope.sellSize}</td>
+                                    <td>${li.companyname}</td>
+                                    <td>${li.cdescribe}</td>
+                                    <td>${li.cname}</td>
+                                    <td>${li.ctel}</td>
+                                    <td><fmt:formatDate
+                                            type="date"
+                                            value="${li.ctime}"
+                                            dateStyle="default"
+                                    /></td>
+                                    <td>
+                                        <a href="sell_update?cid=${li.cid}"><img src="${pagecontext.request.getcontextpath}/sell/img/bj.jpg" style="height: 35px"></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <div class="panel-heading" style="float: right;">
+                        <a href="sell_bz"><div class="sell-div" style="font-size: 20px;height: 30px">帮助</div></a>
+                        <a href="sell_add33"><div class="sell-div" style="font-size: 20px;height: 30px">新建</div></a>
+                    </div>
+                </div>
             </div>
-        </div>
+
+
+
         <!-- END BASIC TABLE -->
+      </div>
     </div>
 
     </div>
 </div>
+<script src="${pageContext.request.contextPath }/assets/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/sell/js/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="${pageContext.request.contextPath }/sell/js/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    /*JavaScript
+    var now = new Date();
+    myDate.value=now.getFullYear() + "-"+ (now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();*/
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable({
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "全局:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "lengthMenu": [5,10,20,50,100],
+            "autoWidth":true
+        });
+    });
+</script>
 </body>
 </html>
