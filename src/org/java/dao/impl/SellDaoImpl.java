@@ -16,7 +16,7 @@ import java.util.List;
 public class SellDaoImpl implements SellDao {
 
     @Override
-    public List<Client> sellshow(int index, int size, String cname, String companyname, String cdescribe) {
+    public List<Client> sellshow(int index, int size, String cname, String companyname, String cdescribe){
         Session ses = HibernateUtil.getCurrentSession();
         Criteria c = ses.createCriteria(Client.class);
         if (cname!=null&&!cname.equals("")){

@@ -99,8 +99,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="main.jsp" class=""><i class="lnr lnr-chart-bars" ></i> <span>营销管理</span></a></li>
-						<li><a href="management.jsp" class=""><i  class="lnr lnr-file-empty"></i> <span>客户管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/main.jsp" class=""><i class="lnr lnr-chart-bars" ></i> <span>营销管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/management.jsp" class=""><i  class="lnr lnr-file-empty"></i> <span>客户管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-code"></i> <span>服务管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -113,8 +113,8 @@
 								</ul>
 							</div>
 						</li>
-						<li><a href="statistice.jsp" class=""><i class="lnr lnr-cog"></i> <span>统计报表</span></a></li>
-						<li><a href="admin.jsp" class=""><i class="lnr lnr-alarm"></i> <span>基础数据</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/statistice.jsp" class=""><i class="lnr lnr-cog"></i> <span>统计报表</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-alarm"></i> <span>基础数据</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -127,7 +127,7 @@
 				<div class="container-fluid">
 					<div class="panel panel-headline demo-icons">
 						<div class="panel-body" style="height: 800px">
-							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:1300px;height: 800px'></iframe>
+							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:100%;height:100%'></iframe>
 						</div>
 					</div>
 				</div>

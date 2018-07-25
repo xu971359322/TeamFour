@@ -46,53 +46,53 @@
 <body>
 <!-- MAIN CONTENT -->
 <div class="main-content" style="width: 100%">
-    <div class="container-fluid" style="width: 100%">
-        <div class="col-md-6" style="width: 100%">
-        <!-- BASIC TABLE -->
-        <div class="panel" style="width: 99%">
-            <div class="panel-heading">
-                <h3 class="panel-title">销售机会管理</h3>
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                            <tr>
-                                <th>编号</th>
-                                <th>客户名称</th>
-                                <th>概要</th>
-                                <th>联系人</th>
-                                <th>联系电话</th>
-                                <th>创建时间</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${sessionScope.sellList}" var="li" varStatus="k">
-                                <tr>
-                                    <td>${k.index+1+ (sessionScope.sellIndex-1)*sessionScope.sellSize}</td>
-                                    <td>${li.companyname}</td>
-                                    <td>${li.cdescribe}</td>
-                                    <td>${li.cname}</td>
-                                    <td>${li.ctel}</td>
-                                    <td><fmt:formatDate
-                                            type="date"
-                                            value="${li.ctime}"
-                                            dateStyle="default"
-                                    /></td>
-                                    <td>
-                                        <a href="sell_update?cid=${li.cid}"><img src="${pagecontext.request.getcontextpath}/sell/img/bj.jpg" style="height: 35px"></a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                    <div class="panel-heading" style="float: right;">
-                        <a href="sell_bz"><div class="sell-div" style="font-size: 20px;height: 30px">帮助</div></a>
-                        <a href="sell_add33"><div class="sell-div" style="font-size: 20px;height: 30px">新建</div></a>
-                    </div>
-                </div>
-            </div>
+            <div class="container-fluid" style="width: 100%">
+                <div class="col-md-6" style="width: 100%">
+                    <!-- BASIC TABLE -->
+                    <div class="panel" style="width: 99%">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">销售机会管理</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>客户名称</th>
+                                            <th>概要</th>
+                                            <th>联系人</th>
+                                            <th>联系电话</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${sessionScope.sellList}" var="li" varStatus="k">
+                                            <tr>
+                                                <td>${k.index+1+ (sessionScope.sellIndex-1)*sessionScope.sellSize}</td>
+                                                <td>${li.companyname}</td>
+                                                <td>${li.cdescribe}</td>
+                                                <td>${li.cname}</td>
+                                                <td>${li.ctel}</td>
+                                                <td><fmt:formatDate
+                                                        type="date"
+                                                        value="${li.ctime}"
+                                                        dateStyle="default"
+                                                /></td>
+                                                <td>
+                                                    <a href="sell_update?cid=${li.cid}"><img src="${pagecontext.request.getcontextpath}/sell/img/bj.jpg" style="height: 35px"></a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                                <div class="panel-heading" style="float: right;">
+                                    <a href="sell_bz"><div class="sell-div" style="font-size: 20px;height: 30px">帮助</div></a>
+                                    <a href="sell_add33"><div class="sell-div" style="font-size: 20px;height: 30px">新建</div></a>
+                                </div>
+                            </div>
+                        </div>
 
 
 

@@ -76,7 +76,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.user.uname}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -97,7 +97,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="main.jsp" class=""><i class="lnr lnr-file-empty"></i> <span>营销管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath }/main.jsp" class=""><i class="lnr lnr-file-empty"></i> <span>营销管理</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-code" ></i> <span>客户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -107,9 +107,9 @@
 								</ul>
 							</div>
 						</li>
-						<li><a href="sevice.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>服务管理</span></a></li>
-						<li><a href="statistice.jsp" class=""><i class="lnr lnr-cog"></i> <span>统计报表</span></a></li>
-						<li><a href="admin.jsp" class=""><i class="lnr lnr-alarm"></i> <span>基础数据</span></a></li>
+						<li><a href="${pageContext.request.contextPath }/sevice.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>服务管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath }/statistice.jsp" class=""><i class="lnr lnr-cog"></i> <span>统计报表</span></a></li>
+						<li><a href="${pageContext.request.contextPath }/admin.jsp" class=""><i class="lnr lnr-alarm"></i> <span>基础数据</span></a></li>
 					</ul>
 				</nav>
 			</div>
