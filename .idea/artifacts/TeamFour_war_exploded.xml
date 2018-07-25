@@ -7,7 +7,8 @@
           <element id="module-output" name="TeamFour" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="junit-4.7" />
+          <element id="library" level="project" name="jxl" />
+          <element id="library" level="project" name="log4j-core-2.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="TeamFour/web/Web" />

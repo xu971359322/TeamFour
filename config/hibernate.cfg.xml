@@ -16,9 +16,15 @@
 
         <property name="hibernate.current_session_context_class">thread</property>
 
+        <mapping resource="org/java/entity/xieSql.xml"/>
+        <mapping resource="org/java/entity/sql.xml"/>
+        <mapping resource="org/java/entity/xuSql.xml"/>
         <mapping resource="org/java/entity/User.hbm.xml"/>
         <mapping resource="org/java/entity/Client.hbm.xml"/>
         <mapping resource="org/java/entity/Chance.hbm.xml"/>
         <mapping resource="org/java/entity/Plan.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveclient.hbm.xml"/>
+        <mapping resource="org/java/entity/Serveallocation.hbm.xml"/>
+        <mapping resource="org/java/entity/Dispose.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
